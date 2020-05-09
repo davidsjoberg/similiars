@@ -1,8 +1,12 @@
 library(testthat)
 test_that("find_string_distance", {
-  expect_equal(is.list(find_string_distance("k", letters)), TRUE)
-  expect_equal(is.data.frame(find_string_distance("k", letters)[[1]]), TRUE)
+  expect_true(is.list(find_string_distance("k", letters)))
+  expect_true(is.data.frame(find_string_distance("k", letters)[[1]]))
   expect_error(is.data.frame(find_string_distance(1, letters)[[1]]))
+  expect_warning(find_most_similiar_string(c("bgath", "peacj"), stringr::fruit),
+                 "No single most similiar string found for 'bgath'. Returning NA. Most similiar strings were 'date', 'peach'.",
+                 fixed = TRUE)
+
 })
 
 test_that("find_most_similiar_string", {
