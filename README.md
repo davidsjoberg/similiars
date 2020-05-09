@@ -15,7 +15,7 @@ another vector.
 You can install the released version of similiars with:
 
 ``` r
-remotes::install_github("similiars")
+remotes::install_github("davidsjoberg/similiars")
 ```
 
 ## Examples
