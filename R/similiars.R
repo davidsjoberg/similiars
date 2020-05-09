@@ -17,8 +17,8 @@ utils::globalVariables(c(".data", "."))
 #'
 #' @export
 find_string_distance <- function(.s, .t, ignore_case = TRUE, ...) {
-  if(class(.s) != "character") stop("'.s' need to be character vector")
-  if(class(.t) != "character") stop("'.t' need to be character vector")
+  if(any(!is.character(.t), !is.character(.s))) stop("'.s' and '.t' need to be character vectors")
+ 
   purrr::map(.s, function(.e) { 
     .d <- utils::adist(.t, .e, ignore.case = ignore_case)
     dplyr::tibble(input_string = .e,
@@ -52,8 +52,8 @@ find_string_distance <- function(.s, .t, ignore_case = TRUE, ...) {
 #'
 #' @export
 find_most_similiar_string <- function(.s, .t, max_dist = Inf, verbose = TRUE, ignore_case = TRUE, feeling_lucky = FALSE, ...) {
-  if(class(.s) != "character") stop("'.s' need to be character vector")
-  if(class(.t) != "character") stop("'.t' need to be character vector")
+ 
+  if(any(!is.character(.t), !is.character(.s))) stop("'.s' and '.t' need to be character vectors")
   
   .dfs <- find_string_distance(.s, .t, ignore_case = ignore_case)
   .dfs <- purrr::map(.dfs, function(.h) {.h %>% dplyr::filter(.data$string_distance <= max_dist)})
