@@ -59,39 +59,52 @@ find_most_similiar_string <- function(.s, .t, max_dist = Inf, verbose = TRUE, ig
   
   out <- purrr::map_chr(.dfs, ~{
     .x <- .x %>% dplyr::filter(string_distance == min(string_distance))
-    if(verbose){
-       
-      if( nrow(.x) > 1){
+    
+       if( nrow(.x) > 1){
        if(feeling_lucky){
+         
+         if(verbose){
           warning(paste0("No single most similiar string found for '", 
                          .x$input_string[1], 
                          "'. Returning '", .x$string[1], "'. Other exactly similiar strings were ", 
                          paste(paste0("'", .x$string[-1], "'"), 
                                collapse = ", "), 
                          "."))
+         }
           return(.x$string[1])
           
        } else{
          
-         warning(paste0("No single most similiar string found for '", 
-                        .x$input_string[1], 
-                        "'. Returning NA. Most similiar strings were ", 
-                        paste(paste0("'", .x$string, "'"), 
-                              collapse = ", "), 
-                        "."))
+         if(verbose){
+           
+           warning(paste0("No single most similiar string found for '", 
+                          .x$input_string[1], 
+                          "'. Returning NA. Most similiar strings were ", 
+                          paste(paste0("'", .x$string, "'"), 
+                                collapse = ", "), 
+                          "."))
+           
+           
+         }
+         
+        
          return(NA_character_)  
           
         }
        
       }
       if( nrow(.x) == 0 ){
-        warning(paste0("No similiar string below threshold found for '", .x$input_string[1], "'. Returning NA.\n"))
+        if(verbose){
+          warning(paste0("No similiar string below threshold found for '", .x$input_string[1], "'. Returning NA.\n"))
+          
+        }
+     
         
         return(NA_character_)
         
       }
       
-    }
+    
    
     .x %>% dplyr::pull(string)
   })

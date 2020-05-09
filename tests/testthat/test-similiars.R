@@ -6,6 +6,7 @@ test_that("find_string_distance", {
   expect_warning(find_most_similiar_string(c("bgath", "peacj"), stringr::fruit),
                  "No single most similiar string found for 'bgath'. Returning NA. Most similiar strings were 'date', 'peach'.",
                  fixed = TRUE)
+  expect_true(is.na(find_most_similiar_string(c("bgath", "peacj"),stringr::fruit,feeling_lucky = FALSE,verbose = FALSE)[1]))
 
 })
 
