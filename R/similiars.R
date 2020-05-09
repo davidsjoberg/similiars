@@ -54,7 +54,6 @@ find_string_distance <- function(.s, .t, ignore_case = TRUE, ...) {
 find_most_similiar_string <- function(.s, .t, max_dist = Inf, verbose = TRUE, ignore_case = TRUE, feeling_lucky = FALSE, ...) {
  
   if(any(!is.character(.t), !is.character(.s))) stop("'.s' and '.t' need to be character vectors")
-  
   .dfs <- find_string_distance(.s, .t, ignore_case = ignore_case)
   .dfs <- purrr::map(.dfs, function(.h) {.h %>% dplyr::filter(.data$string_distance <= max_dist)})
   
@@ -69,19 +68,24 @@ find_most_similiar_string <- function(.s, .t, max_dist = Inf, verbose = TRUE, ig
                                  "."))
       return(.x$string[1])
     }
-    if(nrow(.x) > 1) {
-      if(verbose) warning(paste0("No single most similiar string found for '", 
-                                 .x$input_string[1], 
-                                 "'. Returning NA. Most similiar strings were ", 
-                                 paste(paste0("'", .x$string, "'"), 
-                                       collapse = ", "), 
-                                 "."))
-      return(NA_character_)
+    if(verbose){
+      if( nrow(.x) > 1){
+        
+        warning(paste0("No single most similiar string found for '", 
+                       .x$input_string[1], 
+                       "'. Returning NA. Most similiar strings were ", 
+                       paste(paste0("'", .x$string, "'"), 
+                             collapse = ", "), 
+                       "."))
+      return(NA_character_)  
+      }
+      if( nrow(.x) == 0 ){
+        warning(paste0("No similiar string below threshold found for '", .x$input_string[1], "'. Returning NA.\n"))
+        return(NA_character_)
+      }
+      
     }
-    if(nrow(.x) == 0) {
-      if(verbose) warning(paste0("No similiar string below threshold found for '", .x$input_string[1], "'. Returning NA.\n"))
-      return(NA_character_)
-    }
+   
     .x %>% dplyr::pull(string)
   })
   out %>% as.character()
