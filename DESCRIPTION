@@ -1,0 +1,21 @@
+Package: similiars
+Title: Matches Strings to Most Similiar String
+Version: 0.1.0
+Authors@R: 
+    person(given = "David",
+           family = "Sjoberg",
+           role = c("aut", "cre"),
+           email = "dav.sjob@gmail.com")
+Description: Package to find similiarity between character vectors.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    dplyr,
+    purrr,
+    utils,
+    stringr,
+    magrittr
+RoxygenNote: 7.1.0
+Suggests: 
+    testthat
