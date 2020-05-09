@@ -1,0 +1,54 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# similiars
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of similiars is to match strings to the most similiar string in another vector.
+
+## Installation
+
+You can install the released version of similiars with:
+
+``` r
+remotes::install_github("similiars")
+```
+
+## Examples
+
+This is a basic example. How similiar is `aple` to the strings `banana, apple and pineapple`.
+
+```{r example}
+library(similiars)
+find_string_distance("aple",
+                     c("banana", "apple", "pineapple"))
+```
+
+The other function included is `find_`
+
+```{r example2}
+library(similiars)
+library(stringr)
+
+x <- c("aple", "anana", "pech")
+find_most_similiar_string(x, fruit)
+
+```
+
+***
+
+If you find anything you want to improve, submit an issue :)
