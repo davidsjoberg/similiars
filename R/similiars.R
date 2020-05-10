@@ -58,6 +58,7 @@ find_most_similiar_string <- function(.s, .t, max_dist = Inf, verbose = TRUE, ig
   .dfs <- purrr::map(.dfs, function(.h) {.h %>% dplyr::filter(.data$string_distance <= max_dist)})
   
   out <- purrr::map_chr(.dfs, ~{
+    if(is.na(.x$input_string[1])) {return(NA_character_)}
     .x <- .x %>% dplyr::filter(string_distance == min(string_distance))
     
        if( nrow(.x) > 1){
