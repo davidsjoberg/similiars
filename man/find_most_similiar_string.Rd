@@ -17,7 +17,7 @@ find_most_similiar_string(
 \arguments{
 \item{.s}{a character vector to be matched.}
 
-\item{.t}{a character vector to be matchad against.}
+\item{.t}{a character vector to be matched against.}
 
 \item{max_dist}{the maximum string distance}
 
@@ -35,6 +35,9 @@ a character vector
 \description{
 Returns a vector of most similiar string in another vector. 
 Returns a vector of the same length as input vector '.s'.
+}
+\details{
+Uses the generalized Levenshtein distance. For more information type \code{?utils::adist} in the console.
 }
 \examples{
 

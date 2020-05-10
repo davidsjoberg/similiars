@@ -21,6 +21,9 @@ a list of dataframes
 \description{
 Returns a list of dataframes arranged by most similiar strings.
 }
+\details{
+Uses the generalized Levenshtein distance. For more information type \code{?utils::adist} in the console.
+}
 \examples{
 
 find_string_distance("pple", stringr::fruit)

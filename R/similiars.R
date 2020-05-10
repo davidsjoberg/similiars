@@ -9,6 +9,8 @@ utils::globalVariables(c(".data", "."))
 #' @param ignore_case should case be ignored? Default is TRUE.
 #' @param ... other arguments passed to utils::adist.
 #'
+#' @details Uses the generalized Levenshtein distance. For more information type \code{?utils::adist} in the console.
+#'
 #' @examples
 #'
 #' find_string_distance("pple", stringr::fruit)
@@ -43,6 +45,8 @@ find_string_distance <- function(.s, .t, ignore_case = TRUE, ...) {
 #' @param verbose should warnings be printed in the console.
 #' @param feeling_lucky if multiple most similiar strings are found. Should the first one be returned?
 #' @param ... other arguments passed to utils::adist.
+#' 
+#' @details Uses the generalized Levenshtein distance. For more information type \code{?utils::adist} in the console.
 #'
 #' @examples
 #'
