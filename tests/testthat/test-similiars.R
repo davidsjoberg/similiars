@@ -13,6 +13,6 @@ test_that("find_string_distance", {
 test_that("find_most_similiar_string", {
   expect_equal(is.character(find_most_similiar_string("appl", stringr::fruit)), TRUE)
   expect_equal(find_most_similiar_string("appl", stringr::fruit), "apple")
-  expect_warning(find_most_similiar_string(NA_character_, stringr::fruit))
+  expect_equal(find_most_similiar_string(NA_character_, stringr::fruit), NA_character_)
   expect_error(find_string_distance(1, letters))
 })
