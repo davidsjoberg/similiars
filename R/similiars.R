@@ -37,7 +37,7 @@ find_string_distance <- function(.s, .t, ignore_case = TRUE, ...) {
 #' Returns a vector of the same length as input vector '.s'.
 #'
 #' @param .s a character vector to be matched.
-#' @param .t a character vector to be matchad against.
+#' @param .t a character vector to be matched against.
 #' @param max_dist the maximum string distance
 #' @param ignore_case should case be ignored? Default is TRUE.
 #' @param verbose should warnings be printed in the console.
