@@ -2,7 +2,7 @@ utils::globalVariables(c(".data", "."))
 
 #' @title find_string_distance
 #'
-#' @description Returns a list of dataframes arranged by most similiar strings.
+#' @description Returns a list of dataframes arranged by most similar strings.
 #'
 #' @param .s a character vector to be matched.
 #' @param .t a character vector to be matchad against.
@@ -33,9 +33,9 @@ find_string_distance <- function(.s, .t, ignore_case = TRUE, ...) {
 
 
 
-#' @title find_most_similiar_string
+#' @title find_most_similar_string
 #'
-#' @description Returns a vector of most similiar string in another vector. 
+#' @description Returns a vector of most similar string in another vector. 
 #' Returns a vector of the same length as input vector '.s'.
 #'
 #' @param .s a character vector to be matched.
@@ -43,19 +43,19 @@ find_string_distance <- function(.s, .t, ignore_case = TRUE, ...) {
 #' @param max_dist the maximum string distance
 #' @param ignore_case should case be ignored? Default is TRUE.
 #' @param verbose should warnings be printed in the console.
-#' @param feeling_lucky if multiple most similiar strings are found. Should the first one be returned?
+#' @param feeling_lucky if multiple most similar strings are found. Should the first one be returned?
 #' @param ... other arguments passed to utils::adist.
 #' 
 #' @details Uses the generalized Levenshtein distance. For more information type \code{?utils::adist} in the console.
 #'
 #' @examples
 #'
-#' find_most_similiar_string(c("pple", "peacj"), stringr::fruit)
+#' find_most_similar_string(c("pple", "peacj"), stringr::fruit)
 #'
 #' @return a character vector
 #'
 #' @export
-find_most_similiar_string <- function(.s, .t, max_dist = Inf, verbose = TRUE, ignore_case = TRUE, feeling_lucky = FALSE, ...) {
+find_most_similar_string <- function(.s, .t, max_dist = Inf, verbose = TRUE, ignore_case = TRUE, feeling_lucky = FALSE, ...) {
  
   if(any(!is.character(.t), !is.character(.s))) stop("'.s' and '.t' need to be character vectors")
   .dfs <- find_string_distance(.s, .t, ignore_case = ignore_case)
@@ -69,9 +69,9 @@ find_most_similiar_string <- function(.s, .t, max_dist = Inf, verbose = TRUE, ig
        if(feeling_lucky){
          
          if(verbose){
-          warning(paste0("No single most similiar string found for '", 
+          warning(paste0("No single most similar string found for '", 
                          .x$input_string[1], 
-                         "'. Returning '", .x$string[1], "'. Other exactly similiar strings were ", 
+                         "'. Returning '", .x$string[1], "'. Other exactly similar strings were ", 
                          paste(paste0("'", .x$string[-1], "'"), 
                                collapse = ", "), 
                          "."))
@@ -82,9 +82,9 @@ find_most_similiar_string <- function(.s, .t, max_dist = Inf, verbose = TRUE, ig
          
          if(verbose){
            
-           warning(paste0("No single most similiar string found for '", 
+           warning(paste0("No single most similar string found for '", 
                           .x$input_string[1], 
-                          "'. Returning NA. Most similiar strings were ", 
+                          "'. Returning NA. Most similar strings were ", 
                           paste(paste0("'", .x$string, "'"), 
                                 collapse = ", "), 
                           "."))
@@ -100,7 +100,7 @@ find_most_similiar_string <- function(.s, .t, max_dist = Inf, verbose = TRUE, ig
       }
       if( nrow(.x) == 0 ){
         if(verbose){
-          warning(paste0("No similiar string below threshold found for '", .x$input_string[1], "'. Returning NA.\n"))
+          warning(paste0("No similar string below threshold found for '", .x$input_string[1], "'. Returning NA.\n"))
           
         }
      
