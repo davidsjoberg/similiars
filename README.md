@@ -7,41 +7,39 @@
 
 <!-- badges: end -->
 
-The goal of similiars is to match strings to the most similiar string in
+The goal of similars is to match strings to the most similar string in
 another vector.
 
 ## Installation
 
-You can install the released version of similiars with:
+You can install the released version of `similiars` with:
 
 ``` r
 remotes::install_github("davidsjoberg/similiars")
 ```
 
-### `find_most_similiar_string`
+### `find_most_similar_string`
 
-The main function included is `find_most_similiar_string` which returns
-a vector of the same length as the vector to be matched against another.
+The main function included is `find_most_similar_string` which returns a
+vector of the same length as the vector to be matched against another.
 
 ``` r
 library(similiars)
-library(stringr)
 
 x <- c("aple", "anana", "pech")
-find_most_similiar_string(x, fruit)
+find_most_similar_string(x, stringr::fruit)
 #> [1] "apple"  "banana" "peach"
 ```
 
 ### `find_string_distance`
 
 The other function is `find_string_distance`. It returns a list of
-dataframes for each word and how similiar each string is to all matched
+dataframes for each word and how similar each string is to all matched
 strings. If you are not sure if there is a good match to be found it is
 good practise to use this function before using
-`find_most_similiar_string`.
+`find_most_similar_string`.
 
 ``` r
-library(similiars)
 find_string_distance(c("aple", "abna"),
                      c("banana", "apple", "pineapple"))
 #> $aple
@@ -59,6 +57,28 @@ find_string_distance(c("aple", "abna"),
 #> 1 abna         banana                  3
 #> 2 abna         apple                   4
 #> 3 abna         pineapple               7
+```
+
+### `case_when_skeleton`
+
+If you want manual control over which should be replaced you can create
+a `case_when` code chunk to use in your script.
+
+``` r
+# Misspelled vector
+supr_heros   <- c("Btman", "Supergrl", "Tor", "Capitan 'Murica")
+# Corrected vector
+super_heroes <- find_most_similar_string(supr_heros, superheroes)
+
+# Make case_when skeleton to replace
+case_when_skeleton(supr_heros, super_heroes)
+#> case_when(
+#>     supr_heros == "Btman" ~ "Batman",
+#>     supr_heros == "Supergrl" ~ "Supergirl",
+#>     supr_heros == "Tor" ~ "Thor",
+#>     supr_heros == "Capitan 'Murica" ~ "Captain America",
+#>   T ~ supr_heros
+#> )
 ```
 
 -----
