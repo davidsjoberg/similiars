@@ -10,12 +10,15 @@ Description: Package to find similiarity between character vectors.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Depends: R (>= 3.1.0)
 Imports: 
     dplyr,
     purrr,
     utils,
     stringr,
-    magrittr
+    magrittr,
+    tidyr,
+    rlang
 RoxygenNote: 7.1.0
 Suggests: 
     testthat
