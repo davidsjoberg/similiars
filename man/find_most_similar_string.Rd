@@ -41,6 +41,6 @@ Uses the generalized Levenshtein distance. For more information type \code{?util
 }
 \examples{
 
-find_most_similar_string(c("pple", "peacj"), stringr::fruit)
+find_most_similar_string(c("battman", "Irn Man"), superheroes)
 
 }

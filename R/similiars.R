@@ -13,7 +13,7 @@ utils::globalVariables(c(".data", "."))
 #'
 #' @examples
 #'
-#' find_string_distance("pple", stringr::fruit)
+#' find_string_distance("battman", superheroes)
 #'
 #' @return a list of dataframes
 #'
@@ -50,7 +50,7 @@ find_string_distance <- function(.s, .t, ignore_case = TRUE, ...) {
 #'
 #' @examples
 #'
-#' find_most_similar_string(c("pple", "peacj"), stringr::fruit)
+#' find_most_similar_string(c("battman", "Irn Man"), superheroes)
 #'
 #' @return a character vector
 #'
