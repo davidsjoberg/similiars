@@ -26,6 +26,6 @@ Uses the generalized Levenshtein distance. For more information type \code{?util
 }
 \examples{
 
-find_string_distance("pple", stringr::fruit)
+find_string_distance("battman", superheroes)
 
 }
