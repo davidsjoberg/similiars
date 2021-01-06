@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # similiars
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/davidsjoberg/similiars/workflows/R-CMD-check/badge.svg)](https://github.com/davidsjoberg/similiars/actions)
 <!-- badges: end -->
 
 The goal of similars is to match strings to the most similar string in another vector.
@@ -35,8 +36,8 @@ The main function included is `find_most_similar_string` which returns a vector 
 ```{r example2}
 library(similiars)
 
-x <- c("aple", "anana", "pech")
-find_most_similar_string(x, stringr::fruit)
+x <- c("battman", "Y-men", "Supergrl")
+find_most_similar_string(x, superheroes)
 
 ```
 

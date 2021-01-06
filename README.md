@@ -5,6 +5,7 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/davidsjoberg/similiars/workflows/R-CMD-check/badge.svg)](https://github.com/davidsjoberg/similiars/actions)
 <!-- badges: end -->
 
 The goal of similars is to match strings to the most similar string in
@@ -26,9 +27,9 @@ vector of the same length as the vector to be matched against another.
 ``` r
 library(similiars)
 
-x <- c("aple", "anana", "pech")
-find_most_similar_string(x, stringr::fruit)
-#> [1] "apple"  "banana" "peach"
+x <- c("battman", "Y-men", "Supergrl")
+find_most_similar_string(x, superheroes)
+#> [1] "Batman"    "X-Men"     "Supergirl"
 ```
 
 ### `find_string_distance`
